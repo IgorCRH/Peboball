@@ -1,3 +1,29 @@
+if ($http_origin ~* "^http://www.example.com:8080$") {
+            add_header Access-Control-Allow-Origin "$http_origin";
+            add_header Access-Control-Allow-Methods "OPTIONS, DELETE, POST, GET, PATCH, PUT";
+            add_header Access-Control-Max-Age "3600";
+            add_header Access-Control-Allow-Credentials "true";
+            add_header Access-Control-Allow-Headers "Content-Type";
+            set $test  "A";
+        }
+
+if ($request_method = 'OPTIONS') {
+            set $test  "${test}B";
+        }
+
+        if ($test = "AB") {
+            add_header Access-Control-Allow-Origin "$http_origin";
+            add_header Access-Control-Allow-Methods "OPTIONS, DELETE, POST, GET, PATCH, PUT";
+            add_header Access-Control-Max-Age "3600";
+            add_header Access-Control-Allow-Credentials "true";
+            add_header Access-Control-Allow-Headers "Content-Type";
+            return 204;
+        }
+
+        if ($test = "B") {
+            return 403;
+        }
+
 import { Project } from "./index.esm.js";
 
 import Stage from "./Stage/Stage.js";
