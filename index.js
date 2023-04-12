@@ -1,11 +1,4 @@
-func GetMessages(c *gin.Context) {
-	version := c.Param("version")
-	fmt.Println("Version", version)
-	if version == "v2" {
-		c.Header("Access-Control-Allow-Origin", "https://igorcrh.github.io/")
-	}
-	c.JSON(http.StatusOK, gin.H{"messages": messages})
-}
+
 
 import { Project } from "./index.esm.js";
 
