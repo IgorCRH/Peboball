@@ -1,3 +1,5 @@
+Access-Control-Allow-Origin: https://igorcrh.github.io/
+
 import { Project } from "./index.esm.js";
 
 import Stage from "./Stage/Stage.js";
